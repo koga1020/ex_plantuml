@@ -15,10 +15,9 @@ defmodule ExPlantuml do
       "~1UDfpoa_IjNFCoKnELR1Io4ZDoSa703O41Ui0"
 
   """
-  def encode(data) do
-    compressed = Zlib.deflate(data)
-
-    compressed
+  def encode(uml_text) do
+    uml_text
+    |> Zlib.deflate()
     |> :binary.bin_to_list()
     |> Enum.chunk_every(3, 3, [0, 0])
     |> Enum.map_join(fn [b1, b2, b3] ->
