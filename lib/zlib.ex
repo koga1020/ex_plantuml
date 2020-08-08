@@ -1,6 +1,6 @@
-defmodule ExPlantuml.Compression do
+defmodule ExPlantuml.Zlib do
   @moduledoc """
-  compression module.
+  zlib module.
   """
   @doc """
   exec deflate compression.
@@ -8,12 +8,12 @@ defmodule ExPlantuml.Compression do
   ## Examples
 
       iex> deflate("0")
-      <<120, 156, 51, 0, 0, 0, 49, 0, 49>>
+      <<120, 218, 51, 0, 0, 0, 49, 0, 49>>
 
   """
   def deflate(data) do
     z = :zlib.open()
-    :ok = :zlib.deflateInit(z)
+    :ok = :zlib.deflateInit(z, 9)
     [compressed] = :zlib.deflate(z, data, :finish)
     :zlib.deflateEnd(z)
     :zlib.close(z)
