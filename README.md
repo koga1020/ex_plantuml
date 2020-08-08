@@ -1,21 +1,24 @@
 # ExPlantuml
 
-**TODO: Add description**
+encoding library for plantuml text.
 
 ## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `ex_plantuml` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
   [
-    {:ex_plantuml, "~> 0.1.0"}
+    {:ex_plantuml, git: "https://github.com/koga1020/ex_plantuml.git"}
   ]
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/ex_plantuml](https://hexdocs.pm/ex_plantuml).
+## Usage
 
+```elixir
+iex> ExPlantuml.encode("Bob->Alice : hello")
+"~1UDfpoa_IjNFCoKnELR1Io4ZDoSa703O41Ui0"
+```
+
+## Reference
+
+- [PlantUML Text Encoding](https://plantuml.com/en/text-encoding)
