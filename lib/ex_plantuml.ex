@@ -7,7 +7,7 @@ defmodule ExPlantuml do
   use Bitwise
 
   @doc """
-  encode.
+  encode plantuml text.
 
   ## Examples
 
@@ -37,12 +37,12 @@ defmodule ExPlantuml do
     |> add_header()
   end
 
-  def encode6bit(b) when b < 10, do: <<48 + b>>
-  def encode6bit(b) when b - 10 < 26, do: <<65 + b - 10>>
-  def encode6bit(b) when b - 10 - 26 < 26, do: <<97 + b - 10 - 26>>
-  def encode6bit(b) when b - 10 - 26 - 26 == 0, do: "-"
-  def encode6bit(b) when b - 10 - 26 - 26 == 1, do: "_"
-  def encode6bit(_), do: "?"
+  defp encode6bit(b) when b < 10, do: <<48 + b>>
+  defp encode6bit(b) when b - 10 < 26, do: <<65 + b - 10>>
+  defp encode6bit(b) when b - 10 - 26 < 26, do: <<97 + b - 10 - 26>>
+  defp encode6bit(b) when b - 10 - 26 - 26 == 0, do: "-"
+  defp encode6bit(b) when b - 10 - 26 - 26 == 1, do: "_"
+  defp encode6bit(_), do: "?"
 
-  def add_header(encoded), do: "~1#{encoded}"
+  defp add_header(encoded), do: "~1#{encoded}"
 end
